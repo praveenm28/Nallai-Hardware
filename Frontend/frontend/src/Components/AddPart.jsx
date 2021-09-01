@@ -95,16 +95,21 @@ export default class AddPart extends Component {
                 <Form onSubmit={this.onSubmit}>
                     <Form.Group className = "mb-3" controlId = "formBasicName">
                         <Form.Label>Name of part</Form.Label>
+                        <br/>
                         <Form.Control type = "text"
                             placeholder = "Enter the name of the part" onChange = {this.onChangePartName} value = {this.state.name} required/>
                     </Form.Group>
+                    <br/>
                     <Form.Group className = "mb-3" controlId = "formBasicdescription">
                         <Form.Label>Description</Form.Label>
+                        <br/>
                         <Form.Control as = "textarea" 
                             rows = {4} onChange = {this.onChangeDescription} value = {this.state.desc}/>
                     </Form.Group>
+                    <br/>
                     <Form.Group className = "mb-3" controlId = "formBasicShelfNo">
                         <Form.Label>Shelf Number</Form.Label>
+                        <br/>
                         <Form.Control as = "select" defaultValue = "Select shelf Number" onChange = {this.onChangeShelfNo} value = {this.state.shelfNo}>
                             <option>Select shelf Number</option>
                             <option value = '1'>Shelf No. 01</option>
@@ -113,19 +118,25 @@ export default class AddPart extends Component {
                             <option value = '4'>Shelf No. 04</option>
                         </Form.Control>
                     </Form.Group>
+                    <br/>
                     <Form.Group className = "mb-3" controlId = "formBasicPrice">
                         <Form.Label>Price</Form.Label>
+                        <br/>
                         <Form.Control type = "text" placeholder = "Enter the price" onChange = {this.onChangePrice} value = {this.state.price} required/>
                     </Form.Group>
-                    
+                    <br/>
                     <Form.Group className = "mb-3" controlId = "formBasicAvailability">
                         <Form.Label>Availability</Form.Label>
                         <br/>
-                        <Form.Check inline type = "radio" value = "true" name = "availability" checked ={this.state.availability === 'true'} onChange = {this.handleRadio}/>
+                        <br/>
+                        <Form.Text>Available</Form.Text>
+                        <Form.Check inline type = "radio" value = "true" name = "availability" checked ={this.state.availability === 'true'} onChange = {this.handleRadio}/><br/>
+                        <Form.Text>Not Available</Form.Text>
                         <Form.Check inline type = "radio" value = "false" name = "availability" checked = {this.state.availability === 'false'} onChange = {this.handleRadio} />
                     </Form.Group>
+                    <br/>
 
-                    <Button style = {{backgroundColor:"#053b4b", color:"white", borderRadius:15}} variant = "primary" type = "submit">Add</Button>
+                    <Button style = {{backgroundColor:"#053b4b", color:"white", borderRadius:15}}type = "submit">Add</Button>
                     
                 </Form>
                 </div>
