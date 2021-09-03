@@ -126,7 +126,7 @@ export default class UpdatePart extends Component {
                     <br/>
                     <Form.Group className = "mb-3" controlId = "formBasicShelfNo">
                         <Form.Label>Shelf Number</Form.Label><br/>
-                        <Form.Control as = "select" defaultValue = "Select shelf Number" onChange = {this.onChangeShelfNo} value = {this.state.shelfNo}>
+                        <Form.Control as = "select" onChange = {this.onChangeShelfNo} value = {this.state.shelfNo}>
                             <option>Select shelf Number</option>
                             <option value = '1'>Shelf No. 01</option>
                             <option value = '2'>Shelf No. 02</option>
@@ -153,7 +153,7 @@ export default class UpdatePart extends Component {
                     </Form.Group>
                     <br/>
 
-                    <Button style = {{backgroundColor:"#053b4b", color:"white", borderRadius:15}} variant = "primary" type = "submit">Add</Button>
+                    <Button style = {{backgroundColor:"#053b4b", color:"white", borderRadius:15}} variant = "primary" type = "submit">Update</Button>
                     
                 </Form>
                 </div>

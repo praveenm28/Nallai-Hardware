@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 
 
-export default class ViewItems extends Component {
+export default class SearchResult extends Component {
 
     constructor(props){
         super(props)
@@ -33,20 +33,15 @@ export default class ViewItems extends Component {
         console.log(sortedParts);
     }
 
-    
-
     componentDidMount(){
-
-       
         axios
-            .get("http://localhost:8080/api/parts/viewParts")
+            .get("http://localhost:8080/api/parts/viewParts/?searchKey="+this.props.match.params.searchKey)
             .then((res) => {
                 this.setState({Parts:res.data});
             })
             .catch((err) =>{
                 console.log(err);
-                });
-
+            });
     }
 
     deletePart(id){
@@ -64,27 +59,19 @@ export default class ViewItems extends Component {
 
     }
 
-    onChangeSearchKey = (e) => {
+    onChangeSearchKey(e){
         this.setState({
             searchKey : e.target.value
         })
     }
 
-    handleSearch(){
-        axios
-            .get("http://localhost:8080/api/parts/viewParts")
-            .then(res => {
-                this.setState({Parts:res.data})
-            }).catch(err => {
-                console.log(err)
-            })
-    }
+    
     
 
     render() {
         return (
             <div style = {{align : 'center'}}>
-                <h1 style={{fontWeight:'bold', marginTop:'2rem'}}>Vehicle Parts</h1>
+                <h1 style={{fontWeight:'bold', marginTop:'2rem'}}>Search Results for '{this.props.match.params.searchKey}'</h1>
                 <div style = {{alignItems: 'center'}}>
                     <Form>
                     Search : <Form.Control type = "text" value = {this.state.searchKey} onChange = {this.onChangeSearchKey}></Form.Control>
@@ -93,15 +80,13 @@ export default class ViewItems extends Component {
 
                     <Button onClick={() => this.sortByName()}>Sort By Name</Button>
 
-                    
-
                     <Link to = "/addPart" style={{textDecoration :'none', color:'black'}}>Add Part</Link>
                 </div>
+
                 
                 <br/><br/>
                 <div>
                     <Row xs = {10} md={2} lg={4} className ="g-4" style = {{display : 'flex', flexWrap:'wrap', alignItems: 'center', justifyContent:'space-around'}}>
-                    
                     {!this.state.isSorted ?
                         (this.state.Parts.map(
                             Part => 
@@ -141,7 +126,6 @@ export default class ViewItems extends Component {
                                 </Col>
                         ))
             }
-                    
                     
                     </Row>
                 </div>

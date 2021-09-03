@@ -3,6 +3,7 @@ package com.example.nallai_backend.Controller;
 import com.example.nallai_backend.Model.VehiclePart;
 import com.example.nallai_backend.Repository.VehiclePartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +21,15 @@ public class VehiclePartController {
     private VehiclePartRepository repo;
 
     @GetMapping("viewParts")
-    public List<VehiclePart> getParts(){
+    public List<VehiclePart> getParts(@Param("searchKey") String searchKey){
+
+        if(searchKey!=null){
+
+//            List result = repo.findAll((searchKey));
+//            System.out.println(result);
+            return repo.findAll(searchKey);
+
+        }
         return repo.findAll();
     }
 
